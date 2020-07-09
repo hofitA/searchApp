@@ -1,0 +1,90 @@
+/* :link pseudo-class represents an element that has not yet been visited */
+.btn{
+    &,
+    &:link,
+    &:visited {
+        text-transform: uppercase;
+        text-decoration: none;    
+        padding: 1.5rem 4rem;
+        display: inline-block;
+        border-radius: 10rem;
+        transition: all .2s;
+        position: relative;
+        font-size: @default-font-size;
+        border: none;
+        cursor: pointer;
+    }
+
+    &:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(@color-black, .2); /* x y blure color*/
+        
+        &::after{
+            transform: scaleX(1.4) scaleY(1.6);
+            opacity: 0; /* make it invisible */
+        }
+
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+        transform: translateY(-1px);  
+        box-shadow: 0 .5rem 1rem rgba(@color-black, .2);
+    }
+    
+    &::after{
+        content:"";
+        display: inline-block;
+        height: 100%; /* 100% the height of the botton */
+        width: 100%;
+        border-radius: 10rem;
+        /* we want this after btn be behind */
+        position: absolute; 
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all .4s;
+    }
+
+    &--grey{
+        background-color: @color-grey-light-2;
+        color:@color-grey-dark-3; 
+
+        &::after{
+            background-color: @color-grey-light-2;
+        }
+    }   
+
+    &--blue{
+        background-color: @color-blue-dark;
+        color:@color-white; 
+        float: right;
+        margin-bottom: @gutter-vertical-small;
+        
+        &::after{
+            background-color: @color-blue-dark;
+        }
+    }
+   
+    &--yellow {
+        text-transform: lowercase;
+        text-decoration: none;    
+        border-radius: 2rem;
+        transition: all .2s;
+        font-size: 1.3rem;
+        border: none;
+        cursor: pointer;
+
+        background-color: @color-yellow;
+        color:@color-grey-dark; 
+
+        &:active,
+        &:focus {
+            outline: none;
+            transform: translateY(-1px);  
+            box-shadow: 0 .5rem 1rem rgba(@color-black, .2);
+        }
+    }
+    
+}

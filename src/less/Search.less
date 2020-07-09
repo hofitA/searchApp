@@ -1,0 +1,60 @@
+.search {
+    height: 75vh;  /* 95% from the view height */
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(@color-grey-dark, 0.801), 
+        rgba(@color-grey-dark-2, 0.795)), 
+        url(./img/gitIcon.png); /* we have 2 background images on top of eachother: first- gradient, below that- icon image */
+    opacity: 0.5;
+    background-position: top; /* if the window size is smaller the background image will crop from the bottom */
+    position: relative;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 60vh, 0 100%);
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 21%;
+        transform: translate(-14%, -50%);
+        text-align: center;
+    }
+
+    .heading-priamary{
+        color: @color-white;
+        text-transform: lowercase;
+        backface-visibility: hidden; 
+        margin-bottom: 6rem;
+        
+        &--main{        
+            display: block;
+            font-size: 6rem;
+            font-weight: 400;
+            animation-name: moveInLeft;
+            animation-duration: 1s;
+            animation-timing-function: ease-out; 
+        }
+        
+        &--sub{
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            animation: moveInRight 1s ease-out;
+        }
+    }
+
+    .search-field {
+        padding: 1.5rem 3rem;
+        display: inline-block;
+        border-radius: 2rem;
+        position: relative;
+        font-size: @default-font-size;
+        border: none;
+        margin-right: @gutter-horizontal-small;
+        background-color: @color-grey-light-2;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    
+}

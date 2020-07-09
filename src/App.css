@@ -1,3 +1,205 @@
+/* For the browser preformance it's best to only animate 2 diffrent properties */
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+.bookmarks {
+  margin-top: 9rem;
+  font-size: 1.5rem;
+}
+.bookmarks__url {
+  font-size: 1.6rem;
+  text-transform: lowercase;
+}
+/* :link pseudo-class represents an element that has not yet been visited */
+.btn,
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  transition: all 0.2s;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /* x y blure color*/
+}
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+  /* make it invisible */
+}
+.btn:active,
+.btn:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  /* 100% the height of the botton */
+  width: 100%;
+  border-radius: 10rem;
+  /* we want this after btn be behind */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+.btn--grey {
+  background-color: #eee;
+  color: #333;
+}
+.btn--grey::after {
+  background-color: #eee;
+}
+.btn--blue {
+  background-color: #a2c1df;
+  color: #fff;
+  float: right;
+  margin-bottom: 3rem;
+}
+.btn--blue::after {
+  background-color: #a2c1df;
+}
+.btn--yellow {
+  text-transform: lowercase;
+  text-decoration: none;
+  border-radius: 2rem;
+  transition: all 0.2s;
+  font-size: 1.3rem;
+  border: none;
+  cursor: pointer;
+  background-color: #ffcc00;
+  color: #777;
+}
+.btn--yellow:active,
+.btn--yellow:focus {
+  outline: none;
+  transform: translateY(-1px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.gallery {
+  margin-top: 9rem;
+}
+.gallery .item {
+  width: 70%;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  margin-top: 3rem;
+}
+.gallery .item:not(:last-child) {
+  border-bottom: 1px solid #777;
+}
+.gallery .item__heading {
+  font-size: 1.6rem;
+  text-transform: lowercase;
+  display: flex;
+  float: left;
+}
+.gallery .item__details {
+  margin: 0.3rem 0 2rem 1rem;
+  font-size: 1.3rem;
+}
+.gallery .item .btn--yellow[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.search {
+  height: 75vh;
+  /* 95% from the view height */
+  background-image: linear-gradient(to right bottom, rgba(119, 119, 119, 0.801), rgba(153, 153, 153, 0.795)), url(./img/gitIcon.png);
+  /* we have 2 background images on top of eachother: first- gradient, below that- icon image */
+  opacity: 0.5;
+  background-position: top;
+  /* if the window size is smaller the background image will crop from the bottom */
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 60vh, 0 100%);
+}
+.search__text-box {
+  position: absolute;
+  top: 40%;
+  left: 21%;
+  transform: translate(-14%, -50%);
+  text-align: center;
+}
+.search .heading-priamary {
+  color: #fff;
+  text-transform: lowercase;
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+}
+.search .heading-priamary--main {
+  display: block;
+  font-size: 6rem;
+  font-weight: 400;
+  animation-name: moveInLeft;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+}
+.search .heading-priamary--sub {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  animation: moveInRight 1s ease-out;
+}
+.search .search-field {
+  padding: 1.5rem 3rem;
+  display: inline-block;
+  border-radius: 2rem;
+  position: relative;
+  font-size: 1.6rem;
+  border: none;
+  margin-right: 1rem;
+  background-color: #eee;
+}
+.search .search-field:focus {
+  outline: none;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  box-sizing: border-box;
+  padding: 3rem;
+  background-color: #f7f7f7;
+}
 .App {
-  background-color: red;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #777;
 }

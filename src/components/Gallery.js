@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import GalleryItem from './GalleryItem';
+
 class Gallery extends Component {
     constructor (props){
         super (props);
@@ -14,12 +16,16 @@ class Gallery extends Component {
                 data: json.items
             }));  
     }
-
-    handleClick = (e, item) => {
+    
+    /* 
+        handleaddBookmarkClick funcion 
+        send to App component the selected reposetory 
+    */
+    handleBookmarkClick = (e, item) => {
         this.props.clicked ({
             id: item.id,
-            name: item.full_name,
-            url: item.html_url
+            full_name: item.full_name,
+            html_url: item.html_url
         });
         e.target.disabled = true;
     }
@@ -30,15 +36,13 @@ class Gallery extends Component {
         }
         else{
             return (
-                <div>
-                    {this.state.data.map((arrItem)=>{
+                <div className="gallery">
+                    {this.state.data.map((arrItem, index)=>{
                         return (
-                            <div>
-                                <h2> <a href= {arrItem.html_url}>{arrItem.full_name} </a> </h2>
-                                {arrItem.description}
-                                {()=>{this.props.onClickMore(arrItem.id);}}
-                                <button onClick= {(e) => this.handleClick(e, arrItem)}>Bookmark</button>
-                            </div> 
+                            <GalleryItem
+                                key={index} 
+                                arrItem={arrItem} 
+                                handleClick={this.handleBookmarkClick} />                            
                         )
                     })}                          
                 </div>

@@ -1,0 +1,32 @@
+.gallery {
+    margin-top: @gutter-vertical;
+
+    .item {
+        width: 70%;
+        display: grid;
+        grid-template-columns: 80% 20%;
+        margin-top: @gutter-vertical-small;
+        
+        &:not(:last-child){
+            border-bottom: 1px solid @color-grey-dark;
+        }
+
+        &__heading {
+            font-size: @default-font-size;
+            text-transform: lowercase;
+            display: flex;
+            float: left;
+        }
+
+        &__details {
+            margin: .3rem 0 2rem 1rem;
+            font-size: 1.3rem;
+        }
+
+        .btn--yellow[disabled] {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+    }
+
+}
